@@ -2,8 +2,8 @@
 An example extension for Chrome that adds features to chatGPT.
 
 ### Features:
-1) Width of the left panel is 330px
-2) Archive button that hide a chat
+1) The width of the left panel is 330px
+2) Archive button that hides a chat
 3) Auto load chats
 4) Search by title
 
