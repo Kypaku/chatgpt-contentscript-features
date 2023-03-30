@@ -1,0 +1,30 @@
+{
+    "name": "ChatGPTFeatures",
+    "description": "ChatGPTFeatures",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*"
+            ],
+            "css": [],
+            "js": [
+                "js/jquery-2.1.1.min.js",
+                "/content.js"
+            ]
+        }
+    ],
+    "permissions": [
+ 
+    ],
+    "browser_action": {
+        "default_title": "ChatGPTFeatures",
+        "default_icon": "/imgs/icon16.png"
+    },
+    "icons": {
+        "16": "imgs/icon16.png",
+        "48": "imgs/icon48.png",
+        "128": "imgs/icon128.png"
+    },
+    "manifest_version": 2
+}
