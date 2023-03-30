@@ -12,7 +12,7 @@ Just copy content of file content.js in dev console
 
 ### How to install
 1) Download the extension
-2) Go to chrome://extensions/
+2) Go to [chrome://extensions/](chrome://extensions/)
 3) Enable developer mode
 4) Select directiry with the extension
 5) Reload ChatGPT page
