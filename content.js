@@ -57,7 +57,8 @@ function addToggler(container, className, parentClassName) {
 const getContainer = () => document.querySelector(CONTAINER_SELECTOR);
 const getItems = () => Array.from(getContainer()?.children || []);
 //* Main
-$(()=>{
+
+function main() {
     addStyle();
     if(location.href.indexOf("chat.openai.com") >=0 ){
         let archivedChats = JSON.parse(localStorage.getItem("archivedChats") || "[]") || [];
@@ -73,7 +74,7 @@ $(()=>{
                 (newValue !== toggler.innerHTML) && (toggler.innerHTML = newValue);
             }
             // Add archive button
-            getItems().filter((getItem) => !getItem.classList.contains('ext-input-search')).forEach((item) => {
+            getItems().filter((getItem) => !getItem.classList.contains("ext-input-search")).forEach((item) => {
                 const panel = item.querySelector(".right-1") || item.querySelector(".flex-1 .absolute");
                 const parent = item;
                 const chatName = parent?.innerText;
@@ -115,4 +116,10 @@ $(()=>{
     }
     //* *
 
-});
+};
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", main);
+} else {
+    main();
+}
