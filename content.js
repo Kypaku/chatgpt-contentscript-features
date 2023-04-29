@@ -17,7 +17,7 @@ const styleContent = `
 		min-width: 330px; 
 	}
 `;
-const CONTAINER_SELECTOR = "#__next > div > div > div > div > nav > div > div";
+const CONTAINER_SELECTOR = "#__next > div > div > div > div > nav > div.flex-1";
 function localeIncludes(str1, str2) {
     return (str1.toLocaleLowerCase && str1.toLocaleLowerCase()).includes(str2.toLocaleLowerCase && str2.toLocaleLowerCase());
 }
