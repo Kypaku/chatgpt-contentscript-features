@@ -15,9 +15,13 @@ let showArchived = false;
 const styleContent = `
 	#__next > div.overflow-hidden.w-full.h-full.relative > div{
 		min-width: 330px; 
+        width: 330px  !important;
 	}
+    #__next > div.overflow-hidden.w-full.h-full.relative > div > div {
+        width: 330px  !important;
+    }
 `;
-const CONTAINER_SELECTOR = "#__next > div > div > div > div > nav > div.flex-1";
+const CONTAINER_SELECTOR = "#__next > div > div > div > div nav > div.flex-1";
 function localeIncludes(str1, str2) {
     return (str1.toLocaleLowerCase && str1.toLocaleLowerCase()).includes(str2.toLocaleLowerCase && str2.toLocaleLowerCase());
 }
@@ -62,13 +66,22 @@ function main() {
     addStyle();
     if(location.href.indexOf("chat.openai.com") >=0 ){
         let archivedChats = JSON.parse(localStorage.getItem("archivedChats") || "[]") || [];
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            "get": (searchParams, prop) => searchParams.get(prop),
+        });
 
         setInterval(() => {
+            const textarea = document.querySelector('#__next   div > div > div > main > div > form > div textarea')
+            if (params.q && textarea) {
+                textarea.value = params.q
+                //Remove q from url
+                history.pushState({}, null, location.href.split("?")[0]);
+            }
             const container = getContainer();
             addSearch(container, ".ext-input-search");
             addToggler(container, ".ext-archive-toggler", ".ext-input-search");
 
-            const toggler = container.querySelector(".ext-archive-toggler");
+            const toggler = container?.querySelector(".ext-archive-toggler");
             if (toggler) {
 			    const newValue = showArchived ? "Show active" : "Show archived";
                 (newValue !== toggler.innerHTML) && (toggler.innerHTML = newValue);
