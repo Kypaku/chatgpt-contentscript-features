@@ -6,6 +6,7 @@ An example extension for Chrome that adds features to chatGPT.
 2) Archive button that hides a chat
 3) Auto load chats
 4) Search by title
+5) Open a new chat with "query"
 
 ### How to try
 Just copy content of file content.js in dev console
