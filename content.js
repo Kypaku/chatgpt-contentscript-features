@@ -66,15 +66,17 @@ function main() {
     addStyle();
     if(location.href.indexOf("chat.openai.com") >=0 ){
         let archivedChats = JSON.parse(localStorage.getItem("archivedChats") || "[]") || [];
-        const params = new Proxy(new URLSearchParams(window.location.search), {
-            "get": (searchParams, prop) => searchParams.get(prop),
-        });
 
         setInterval(() => {
-            const textarea = document.querySelector('#__next   div > div > div > main > div > form > div textarea')
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                "get": (searchParams, prop) => searchParams.get(prop),
+            });
+            const textarea = document.querySelector("#__next   div > div > div > main > div > form > div textarea");
             if (params.q && textarea) {
-                textarea.value = params.q
-                //Remove q from url
+                setTimeout(() => {
+                    textarea.value = params.q;
+                }, 1000);
+                // Remove q from url
                 history.pushState({}, null, location.href.split("?")[0]);
             }
             const container = getContainer();
